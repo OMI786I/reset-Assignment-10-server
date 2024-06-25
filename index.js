@@ -4,7 +4,7 @@ const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 5000;
 
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 
 // middleware
 
@@ -37,6 +37,15 @@ async function run() {
     app.get("/tourist-spot-section", async (req, res) => {
       const cursor = dataCollection.find();
       const result = await cursor.toArray();
+      res.send(result);
+    });
+
+    // finding data from mongodb
+
+    app.get("/tourist-spot-section/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await dataCollection.findOne(query);
       res.send(result);
     });
 
