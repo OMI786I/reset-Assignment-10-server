@@ -29,6 +29,19 @@ async function run() {
     await client.connect();
 
     //for added spot
+    const countryCollection = client
+      .db("reset-Assignment-10")
+      .collection("country");
+
+    //for reading from mongodb(added spot)
+
+    app.get("/countrySection", async (req, res) => {
+      const cursor = countryCollection.find();
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+
+    //for added spot
     const spotCollection = client
       .db("reset-Assignment-10")
       .collection("addedSection");
