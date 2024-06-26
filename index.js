@@ -57,6 +57,15 @@ async function run() {
       res.send(result);
     });
 
+    //for delete(added section)
+
+    app.delete("/addedSection/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await spotCollection.deleteOne(query);
+      res.send(result);
+    });
+
     const dataCollection = client
       .db("reset-Assignment-10")
       .collection("tourist-spot-section");
