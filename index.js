@@ -28,6 +28,18 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
 
+    //for added spot
+    const spotCollection = client
+      .db("reset-Assignment-10")
+      .collection("addedSection");
+    //sending on server
+    app.post("/addedSection", async (req, res) => {
+      const newData = req.body;
+      console.log(newData);
+      const result = await spotCollection.insertOne(newData);
+      res.send(result);
+    });
+
     const dataCollection = client
       .db("reset-Assignment-10")
       .collection("tourist-spot-section");
