@@ -66,6 +66,33 @@ async function run() {
       res.send(result);
     });
 
+    //updating data of mongodb data(added section)
+
+    app.put("/addedSection/:id", async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const options = { upsert: true };
+      const updatedSpot = req.body;
+
+      const spot = {
+        $set: {
+          spotName: updatedSpot.spotName,
+          photo: updatedSpot.photo,
+          countryName: updatedSpot.countryName,
+          location: updatedSpot.location,
+          description: updatedSpot.description,
+          cost: updatedSpot.cost,
+          season: updatedSpot.season,
+          time: updatedSpot.time,
+          visitor: updatedSpot.visitor,
+        },
+      };
+
+      const result = await spotCollection.updateOne(filter, spot, options);
+      res.send(result);
+      console.log(result);
+    });
+
     const dataCollection = client
       .db("reset-Assignment-10")
       .collection("tourist-spot-section");
@@ -100,9 +127,9 @@ async function run() {
 run().catch(console.dir);
 
 app.get("/", (req, res) => {
-  res.send("Coffee making server is running");
+  res.send(" server is running");
 });
 
 app.listen(port, () => {
-  console.log(`Coffee server is running on port: ${port}`);
+  console.log(` server is running on port: ${port}`);
 });
