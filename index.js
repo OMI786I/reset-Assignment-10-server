@@ -41,6 +41,15 @@ async function run() {
       res.send(result);
     });
 
+    // finding data from mongodb(vietnam)
+
+    app.get("/vietnam/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await vietnamCollection.findOne(query);
+      res.send(result);
+    });
+
     //for country malaysia
     const malaysiaCollection = client
       .db("reset-Assignment-10")
@@ -50,6 +59,15 @@ async function run() {
     app.get("/malaysia", async (req, res) => {
       const cursor = malaysiaCollection.find();
       const result = await cursor.toArray();
+      res.send(result);
+    });
+
+    // finding data from mongodb(malaysia)
+
+    app.get("/malaysia/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await malaysiaCollection.findOne(query);
       res.send(result);
     });
 
@@ -66,6 +84,15 @@ async function run() {
       res.send(result);
     });
 
+    // finding data from mongodb(Combodia)
+
+    app.get("/combodia/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await combodiaCollection.findOne(query);
+      res.send(result);
+    });
+
     //for country Indonesia
     const indonesiaCollection = client
       .db("reset-Assignment-10")
@@ -76,6 +103,15 @@ async function run() {
     app.get("/indonesia", async (req, res) => {
       const cursor = indonesiaCollection.find();
       const result = await cursor.toArray();
+      res.send(result);
+    });
+
+    // finding data from mongodb(Indonesia)
+
+    app.get("/indonesia/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await indonesiaCollection.findOne(query);
       res.send(result);
     });
 
@@ -92,6 +128,15 @@ async function run() {
       res.send(result);
     });
 
+    // finding data from mongodb(Thailand)
+
+    app.get("/thailand/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await thailandCollection.findOne(query);
+      res.send(result);
+    });
+
     //for country Bangladesh
     const bangladeshCollection = client
       .db("reset-Assignment-10")
@@ -102,6 +147,15 @@ async function run() {
     app.get("/bangladesh", async (req, res) => {
       const cursor = bangladeshCollection.find();
       const result = await cursor.toArray();
+      res.send(result);
+    });
+
+    // finding data from mongodb(Bangladesh)
+
+    app.get("/bangladesh/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await bangladeshCollection.findOne(query);
       res.send(result);
     });
 
