@@ -28,6 +28,83 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
 
+    //for country vietnam
+    const vietnamCollection = client
+      .db("reset-Assignment-10")
+      .collection("Vietnam");
+
+    //for reading from mongodb(Vietnam)
+
+    app.get("/vietnam", async (req, res) => {
+      const cursor = vietnamCollection.find();
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+
+    //for country malaysia
+    const malaysiaCollection = client
+      .db("reset-Assignment-10")
+      .collection("Malaysia");
+    //for reading from mongodb(Malaysia)
+
+    app.get("/malaysia", async (req, res) => {
+      const cursor = malaysiaCollection.find();
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+
+    //for country combodia
+    const combodiaCollection = client
+      .db("reset-Assignment-10")
+      .collection("Combodia");
+
+    //for reading from mongodb(Combodia)
+
+    app.get("/combodia", async (req, res) => {
+      const cursor = combodiaCollection.find();
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+
+    //for country Indonesia
+    const indonesiaCollection = client
+      .db("reset-Assignment-10")
+      .collection("Indonesia");
+
+    //for reading from mongodb(Indonesia)
+
+    app.get("/indonesia", async (req, res) => {
+      const cursor = indonesiaCollection.find();
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+
+    //for country Thailand
+    const thailandCollection = client
+      .db("reset-Assignment-10")
+      .collection("Thailand");
+
+    //for reading from mongodb(Thailand)
+
+    app.get("/thailand", async (req, res) => {
+      const cursor = thailandCollection.find();
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+
+    //for country Bangladesh
+    const bangladeshCollection = client
+      .db("reset-Assignment-10")
+      .collection("Bangladesh");
+
+    //for reading from mongodb(Bangladesh)
+
+    app.get("/bangladesh", async (req, res) => {
+      const cursor = bangladeshCollection.find();
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+
     //for added spot
     const countryCollection = client
       .db("reset-Assignment-10")
