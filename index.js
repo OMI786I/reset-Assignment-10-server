@@ -40,6 +40,23 @@ async function run() {
       res.send(result);
     });
 
+    //for reading from mongodb(added spot)
+
+    app.get("/addedSection", async (req, res) => {
+      const cursor = spotCollection.find();
+      const result = await cursor.toArray();
+      res.send(result);
+    });
+
+    // finding data from mongodb(added spot)
+
+    app.get("/addedSection/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await spotCollection.findOne(query);
+      res.send(result);
+    });
+
     const dataCollection = client
       .db("reset-Assignment-10")
       .collection("tourist-spot-section");
